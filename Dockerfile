@@ -12,9 +12,4 @@ WORKDIR /code
 COPY . /code/
 
 # Install dependencies
-# RUN pip install pipenv
-# COPY Pipfile Pipfile.lock /code/
-# RUN pipenv install --system
-
 RUN pip install -r requirements.txt
-
