@@ -12,7 +12,7 @@ The first steps to play this demo:
 
 `cd bmat_test`
 
-`docker-compose run web /code/manage.py migrate`
+`docker-compose run web python /code/manage.py migrate`
 
 - Then run the django server:
 
@@ -21,7 +21,7 @@ The first steps to play this demo:
 This will deploy a django app running in background at <http://127.0.0.1:8000>. You can go to django admin view at 
 <http://127.0.0.1:8000/admin>, but first create a super user:
 
-`docker-compose run web /code/manage.py createsuperuser`
+`docker-compose run web python /code/manage.py createsuperuser`
 
 When you finish, remember to stop the container:
 
@@ -44,7 +44,7 @@ Once you have the files you want to reconcile, run this command:
 Then you can go to the django admin panel and check the Songs and Contributors tables.
 
 ### Questions
-1- Describe briefly the matching and reconciling method chosen. 
+**1- Describe briefly the matching and reconciling method chosen.** 
 
 I've been looking for information about that field because I have no experience on that. It looks like pandas and 
 numpy are the most common libraries to use for this type of works, but I don't have the expertise to use them 
@@ -54,8 +54,8 @@ I tried to group the records with pandas by iswc, concatenating the contributors
 be related with one title. This will only reconcile the records with an iswc informed, blank cases must be treated 
 separately.
  
-2- We constantly receive metadata from our providers, how would
-you automatize the process?
+**2- We constantly receive metadata from our providers, how would
+you automatize the process?**
 
 One way to automatize this task is having an API or an automation server like Jenkins getting those data updates. Then
 configure a trigger to launch the command implemented. If this metadata reception is a really heavy load task, we could 
@@ -77,12 +77,12 @@ The api let you filter songs by iswc by queryparams:
 
 ### Questions
 
-1- Imagine that the Single View has 20 million musical works, do
-you think your solution would have a similar response time?
+**1- Imagine that the Single View has 20 million musical works, do
+you think your solution would have a similar response time?**
 
 The response time will be worse, the query resolution time will start growing with a few million records. 
 
-2- If not, what would you do to improve it?
+**2- If not, what would you do to improve it?**
 
 One solution could be implementing a cache system, like redis.
 
